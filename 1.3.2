@@ -1,0 +1,97 @@
+#import
+import turtle as t
+import random as r
+
+#screen
+wn = t.Screen()
+wn.setup(width=1.0, height=1.0)
+
+#shapes
+wn.addshape("acorn.gif")
+wn.addshape("basket.gif")
+
+#font
+font_setup = ("Verdana", 50, "normal")
+
+#basket setup
+basket = t.Turtle()
+basket.penup()
+basket.speed(0)
+basket.goto(0,-288)
+basket.speed(6)
+basket.shape("basket.gif")
+
+#acorn setup
+acorn_cor_list = [-740, -640, -540, -440, -340, -240, -140, -40, 60, 160, 260, 360, 460, 560, 660, 730]
+acorn_speed = 2
+#background color
+wn.bgpic("forest.gif")
+
+#counter setting
+score = 0
+counter = t.Turtle()
+counter.hideturtle()
+counter.speed(0)
+counter.pencolor("white")
+counter.penup()
+counter.goto(-500, 200)
+
+#list 
+acorn_list = []
+for i in rage(10):
+  apple_list.append(t.Turtle())
+
+#game_over
+def game_over():
+  wn.bgpic(“game_over.gif”)
+
+#function to draw acorns in random coordinate
+def draw_acorns(index):
+  acorn_list[index].showturtle()
+  random_acorn_cor = r.randint(0,15)
+  acorn_list[index].penup()
+  acorn_list[index].shape("acorn.gif")
+  wn.tracer(False)
+  acorn_list[index].speed(acorn_speed)
+  acorn_list[index].setx(random_acorn_cor[random_acorn_cor])
+  acorn_list[index].goto(random_acorn_cor, -500)
+  wn.tracer(True)
+  wn.update()
+  #closes the screen when the acorns reach the ground
+  if acorn_list [index].ycor = -400:
+    #game_over()
+	
+For i in range(10):
+  draw_acorns(i)
+
+
+def update_score():
+  counter.clear()
+  counter.write(score, font=font_setup)
+
+# Basket Movement
+def basket_control():
+  wn.onkey()
+
+update_score()
+
+#each movements
+def move_left():
+  x = basket.xcor()
+  x -= 40
+  basket.setx(x)
+
+def move_right():
+  x = basket.xcor()
+  x += 40
+  basket.setx(x)
+
+#keypress
+wn.onkeypress(move_left,"a")
+wn.onkeypress(move_right, "d")
+
+
+
+wn.listen()
+wn.mainloop()
+
